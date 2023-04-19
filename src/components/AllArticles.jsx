@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchAllArticles } from "../api";
+import { Link } from 'react-router-dom';
 
 
 function AllArticles() {
@@ -24,14 +25,14 @@ function AllArticles() {
                     {list.map((article) => {
                         return (
                             <li key={article.article_id}>
-                                <p>Title: {article.title}</p>
+                                <Link to={`/articles/${article.article_id}`}>
+                                    <p>Title: {article.title}</p>
+                                </Link>
                                 <p>Topic: {article.topic}</p>
-                                <p>Author: {article.author}</p>
+                                <Link to={`/articles/${article.article_id}`}>
+                                    <img src={article.article_img_url} alt={article.title}></img>
+                                </Link>
                                 <p>Body: {article.body}</p>
-                                <p>Created at: {article.created_at}</p>
-                                <p>Votes: {article.votes}</p>
-                                <p>Comments: {article.comments}</p>
-                                <img src={article.article_img_url}></img>
                             </li>
                         );
                     })}

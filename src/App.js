@@ -1,11 +1,15 @@
-import React from 'react';
-import AllArticles from './components/AllArticles';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import Home from "./components/Home";
 import './App.css';
+import React, { useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import AllArticles from './components/AllArticles';
+import SingleArticle from './components/SingleArticle';
+import SignIn from "./components/SignIn";
+import Home from "./components/Home";
 import Header from './components/Header';
+import Nav from './components/Nav';
 
 function App() {
+  const [user, setUser] = useState(undefined);
   const navigate = useNavigate();
 
   function navigateHome() {
@@ -22,11 +26,14 @@ function App() {
 
       <div className="div2">
         <Header />
+        <Nav user={user} setUser={setUser} />
       </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="sign-in" element={<SignIn user={user} setUser={setUser} />} />
         <Route path="/articles" element={<AllArticles />} />
+        <Route path="/articles/:article_id" element={<SingleArticle />} />
       </Routes>
 
 
