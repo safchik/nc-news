@@ -31,3 +31,11 @@ export const signIn = (username) => {
             return undefined;
         });
 }
+
+export const fetchComments = (article_id) => {
+    return axios
+        .get(`${URL}/articles/${article_id}/comments`)
+        .then((response) => {
+            return response.data.comments;
+        });
+}

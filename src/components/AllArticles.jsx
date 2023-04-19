@@ -24,16 +24,16 @@ function AllArticles() {
                 <ul>
                     {list.map((article) => {
                         return (
-                            <li key={article.article_id}>
+                            <div key={article.article_id}>
                                 <Link to={`/articles/${article.article_id}`}>
-                                    <p>Title: {article.title}</p>
+                                    <h4>Title: {article.title}</h4>
                                 </Link>
                                 <p>Topic: {article.topic}</p>
                                 <Link to={`/articles/${article.article_id}`}>
-                                    <img src={article.article_img_url} alt={article.title}></img>
+                                    <img src={article.article_img_url} alt="article"></img>
                                 </Link>
                                 <p>Body: {article.body}</p>
-                            </li>
+                            </div>
                         );
                     })}
                 </ul>

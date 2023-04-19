@@ -7,6 +7,7 @@ import SignIn from "./components/SignIn";
 import Home from "./components/Home";
 import Header from './components/Header';
 import Nav from './components/Nav';
+import Comments from './components/Comments';
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -34,6 +35,7 @@ function App() {
         <Route path="sign-in" element={<SignIn user={user} setUser={setUser} />} />
         <Route path="/articles" element={<AllArticles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route path="/articles/:comment_id" element={<Comments />} />
       </Routes>
 
 
