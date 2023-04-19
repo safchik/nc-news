@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchAllArticles } from "../api";
 import { Link } from 'react-router-dom';
+import '../styles.css';
 
 
 function AllArticles() {
@@ -21,19 +22,19 @@ function AllArticles() {
             {isLoading ? (
                 <h3>Loading...</h3>
             ) : (
-                <ul>
+                <ul style={{ paddingInLine: 0 }}>
                     {list.map((article) => {
                         return (
-                            <li key={article.article_id}>
+                            <div key={article.article_id} className="article">
                                 <Link to={`/articles/${article.article_id}`}>
-                                    <p>Title: {article.title}</p>
+                                    <h4>Title: {article.title}</h4>
                                 </Link>
                                 <p>Topic: {article.topic}</p>
                                 <Link to={`/articles/${article.article_id}`}>
-                                    <img src={article.article_img_url} alt={article.title}></img>
+                                    <img src={article.article_img_url} alt="article" classname="responsive-img"></img>
                                 </Link>
                                 <p>Body: {article.body}</p>
-                            </li>
+                            </div>
                         );
                     })}
                 </ul>
