@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchComments } from "../api";
-import "./comments.css";
+import "../styles.css";
 
 function Comments({ article_id }) {
     const [isLoading, setLoading] = useState(true);
@@ -34,6 +34,7 @@ function Comments({ article_id }) {
                             <li key={comment.comment_id}>
                                 <p>{comment.body}</p>
                                 <p>By: {comment.author}</p>
+                                <p>Created at: {comment.created_at}</p>
                             </li>
                         ))}
                     </ul>

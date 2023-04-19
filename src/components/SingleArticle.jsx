@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { fetchArticleById } from '../api';
 import Comments from "./Comments";
+import '../styles.css';
 
 const SingleArticle = () => {
     const [isLoading, setLoading] = useState(true);
