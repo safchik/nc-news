@@ -1,5 +1,4 @@
 import './App.css';
-
 import React, { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import AllArticles from './components/AllArticles';
@@ -20,14 +19,9 @@ function App() {
 
   return (
     <div className='App'>
-      <div className="div1">
-        <button id="HomeButton" onClick={navigateHome}>
-          Home
-        </button>
-      </div>
+      <div>
+        <Header className="header" />
 
-      <div className="div2">
-        <Header />
         <Nav user={user} setUser={setUser} />
       </div>
 
