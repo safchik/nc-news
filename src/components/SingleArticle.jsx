@@ -29,12 +29,7 @@ const SingleArticle = ({ user }) => {
             setVoteError("You can only vote once.");
         } else {
             const newVotesCount = voteType === 'up' ? article.votes + 1 : article.votes - 1;
-
             voteOnArticle(article_id, voteType)
-                .then(() => {
-                    setArticle({ ...article, votes: newVotesCount });
-                    setHasVoted(true); // set hasVoted to true on successful vote
-                })
                 .catch((error) => {
                     setVoteError(error.message);
                     setArticle({ ...article, votes: article.votes });
