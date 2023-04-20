@@ -19,9 +19,9 @@ function App() {
 
   return (
     <div className='App'>
-
       <div>
         <Header className="header" />
+
         <Nav user={user} setUser={setUser} />
       </div>
 

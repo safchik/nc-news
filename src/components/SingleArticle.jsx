@@ -7,10 +7,11 @@ import '../styles.css';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SingleArticle = () => {
+const SingleArticle = ({ user }) => {
     const [article, setArticle] = useState({});
     const [isLoading, setLoading] = useState(true);
     const [voteError, setVoteError] = useState(null);
+    const [hasVoted, setHasVoted] = useState(false);
     const { article_id } = useParams();
 
     useEffect(() => {
@@ -21,17 +22,24 @@ const SingleArticle = () => {
             });
     }, [article_id]);
 
+
+
     const handleVote = (voteType) => {
-        const newVotesCount = voteType === 'up' ? article.votes + 1 : article.votes - 1;
-        setArticle({ ...article, votes: newVotesCount });
-        voteOnArticle(article_id, voteType)
-            .then((newArticle) => {
-                setArticle(newArticle);
-            })
-            .catch((error) => {
-                setVoteError(error.message);
-                setArticle({ ...article, votes: article.votes });
-            });
+        if (hasVoted) {
+            setVoteError("You can only vote once.");
+        } else {
+            const newVotesCount = voteType === 'up' ? article.votes + 1 : article.votes - 1;
+
+            voteOnArticle(article_id, voteType)
+                .then(() => {
+                    setArticle({ ...article, votes: newVotesCount });
+                    setHasVoted(true); // set hasVoted to true on successful vote
+                })
+                .catch((error) => {
+                    setVoteError(error.message);
+                    setArticle({ ...article, votes: article.votes });
+                });
+        }
     };
 
     return (

@@ -22,7 +22,11 @@ const Nav = ({ user, setUser }) => {
 
         )
     } else {
-        return (<div><button className="signin" onClick={() => navigate('/sign-in')}>Sign In</button></div>)
+        return (
+            <div>
+                <button className="homebutton" id="HomeButton" onClick={navigateHome}>Home</button>
+                <button className="signin" onClick={() => navigate('/sign-in')}>Sign In</button>
+            </div>)
     }
 
 }

@@ -5,6 +5,10 @@ import { signIn } from "../api";
 
 const SignIn = ({ user, setUser }) => {
     const navigate = useNavigate();
+    function navigateHome() {
+        navigate("/");
+    }
+
     useEffect(() => {
         if (user) {
             navigate('/');
@@ -22,6 +26,7 @@ const SignIn = ({ user, setUser }) => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <button className="homebutton" id="HomeButton" onClick={navigateHome}>Home</button>
             <label htmlFor="username">Username:&nbsp;</label>
             <input
                 id="username"
@@ -29,6 +34,7 @@ const SignIn = ({ user, setUser }) => {
                 onChange={(event) => setName(event.target.value)}
             ></input>
             <button className="signin" onClick={() => navigate('/sign-in')}>Sign In</button>
+
         </form>
     );
 };
