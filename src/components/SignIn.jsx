@@ -28,8 +28,7 @@ const SignIn = ({ user, setUser }) => {
                 value={name}
                 onChange={(event) => setName(event.target.value)}
             ></input>
-            <br />
-            <button type="submit" disabled={!name}>Sign in</button>
+            <button className="signin" onClick={() => navigate('/sign-in')}>Sign In</button>
         </form>
     );
 };

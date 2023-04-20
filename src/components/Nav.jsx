@@ -1,21 +1,28 @@
 import { useNavigate } from 'react-router-dom'
 
+
 const Nav = ({ user, setUser }) => {
 
     const logout = () => {
         setUser(undefined)
     }
     const navigate = useNavigate()
+    function navigateHome() {
+        navigate("/");
+    }
+
     if (user) {
         return (
-            <div className='navbar'>
-                <p>{user.name}</p>
-                <img class="avatar" src={user.avatar_url} />
-                <button onClick={logout}>Logout</button>
+            <div className="navbar">
+                <button className="logoutbutton" onClick={logout}>Logout</button>
+                <p>Hello, {user.name}!</p>
+                <img class="avatar" src={user.avatar_url} alt="avatar" />
+                <button className="homebutton" id="HomeButton" onClick={navigateHome}>Home</button>
             </div>
+
         )
     } else {
-        return (<div className='navbar'><button onClick={() => navigate('/sign-in')}>Sign In</button></div>)
+        return (<div><button className="signin" onClick={() => navigate('/sign-in')}>Sign In</button></div>)
     }
 
 }

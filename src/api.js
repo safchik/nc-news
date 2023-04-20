@@ -39,3 +39,11 @@ export const fetchComments = (article_id) => {
             return response.data.comments;
         });
 }
+
+export const voteOnArticle = (article_id, voteType) => {
+    return axios
+        .patch(`${URL}/articles/${article_id}`, { inc_votes: voteType === 'up' ? 1 : -1 })
+        .then((response) => {
+            return response.data.article;
+        });
+};
