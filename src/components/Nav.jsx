@@ -25,7 +25,8 @@ const Nav = ({ user, setUser }) => {
         return (
             <div>
                 <button className="homebutton" id="HomeButton" onClick={navigateHome}>Home</button>
-                <button className="signin" onClick={() => navigate('/sign-in')}>Sign In</button>
+                <button className="signin" onClick={() => navigate('/sign-in')}>Log In</button>
+                <button className="userlist" onClick={() => navigate('/allusers')}>User List</button>
             </div>)
     }
 

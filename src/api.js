@@ -40,6 +40,15 @@ export const fetchComments = (article_id) => {
         });
 }
 
+export const postComment = (article_id, comment) => {
+
+    return axios
+        .post(`${URL}/articles/${article_id}/comments`, comment)
+        .then((response) => {
+            return response.data.comment;
+        });
+};
+
 export const voteOnArticle = (article_id, voteType) => {
     return axios
         .patch(`${URL}/articles/${article_id}`, { inc_votes: voteType === 'up' ? 1 : -1 })
@@ -47,3 +56,12 @@ export const voteOnArticle = (article_id, voteType) => {
             return response.data.article;
         });
 };
+
+export const getAllUsers = () => {
+    return axios
+        .get(`${URL}/users`)
+        .then((response) => {
+            return response.data.users;
+        });
+}
+
