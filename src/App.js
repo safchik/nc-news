@@ -9,12 +9,10 @@ import Header from './components/Header';
 import Nav from './components/Nav';
 import Comments from './components/Comments';
 import { UserContext } from './contexts/User';
+import UserList from './components/UserList';
 
 function App() {
   const [user, setUser] = useState(undefined);
-
-
-
 
   return (
     <UserContext.Provider value={user}>
@@ -31,6 +29,7 @@ function App() {
           <Route path="/articles" element={<AllArticles />} />
           <Route path="/articles/:article_id" element={<SingleArticle />} />
           <Route path="/articles/:comment_id" element={<Comments />} />
+          <Route path="/allusers" element={<UserList setUser={setUser} />} />
         </Routes>
       </div>
     </UserContext.Provider>

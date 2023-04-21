@@ -9,8 +9,9 @@ function Comments({ article_id }) {
     const [isLoading, setLoading] = useState(true);
     const [comments, setComments] = useState([]);
     const [isExpanded, setExpanded] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const [commentSubmitted, setCommentSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState(null);
     const [newComment, setNewComment] = useState('');
     const user = useContext(UserContext);
@@ -24,7 +25,6 @@ function Comments({ article_id }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(newComment, user)
         postComment(article_id, { body: newComment, username: user.username })
             .then((response) => {
                 setComments([...comments, response]);
@@ -48,19 +48,23 @@ function Comments({ article_id }) {
 
     return (
         <section id="comments">
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Your comment:
-                        <textarea value={newComment} onChange={(event) => setNewComment(event.target.value)} />
-                    </label>
-                    {submitError && <p>Error: {submitError}</p>}
-                    <button className="commentsubmit" type="submit" disabled={isSubmitting}>
-                        {isSubmitting ? "Submitting..." : "Submit"}
-                    </button>
-                    {commentSubmitted && <p>Your comment has been submitted successfully!</p>}
-                </form>
-            </div>
+            {user ? (
+                <div>
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            Your comment:
+                            <textarea value={newComment} onChange={(event) => setNewComment(event.target.value)} />
+                        </label>
+                        {submitError && <p>Error: {submitError}</p>}
+                        <button className="commentsubmit" type="submit" disabled={isSubmitting}>
+                            {isSubmitting ? "Submitting..." : "Submit"}
+                        </button>
+                        {commentSubmitted && <p>Your comment has been submitted successfully!</p>}
+                    </form>
+                </div>
+            ) : (
+                <p>Please log in to post a comment.</p>
+            )}
 
             <button className="accordion" onClick={handleToggleClick}>
                 {isExpanded ? "Hide comments" : "Show comments"}

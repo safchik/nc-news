@@ -41,7 +41,7 @@ export const fetchComments = (article_id) => {
 }
 
 export const postComment = (article_id, comment) => {
-    console.log(comment)
+
     return axios
         .post(`${URL}/articles/${article_id}/comments`, comment)
         .then((response) => {
@@ -56,4 +56,12 @@ export const voteOnArticle = (article_id, voteType) => {
             return response.data.article;
         });
 };
+
+export const getAllUsers = () => {
+    return axios
+        .get(`${URL}/users`)
+        .then((response) => {
+            return response.data.users;
+        });
+}
 
