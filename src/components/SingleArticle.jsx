@@ -25,14 +25,18 @@ const SingleArticle = ({ user }) => {
 
 
     const handleVote = (voteType) => {
-        if (hasVoted) {
-            setVoteError("You can only vote once.");
+        if (hasVoted && voteType === article.voteType) {
+            setVoteError("You have already voted once!");
+            return;
         } else {
             const newVotesCount = voteType === 'up' ? article.votes + 1 : article.votes - 1;
+            setArticle({ ...article, votes: newVotesCount, voteType });
+            setHasVoted(true);
             voteOnArticle(article_id, voteType)
                 .catch((error) => {
                     setVoteError(error.message);
                     setArticle({ ...article, votes: article.votes });
+                    setHasVoted(false);
                 });
         }
     };

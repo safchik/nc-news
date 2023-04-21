@@ -33,7 +33,7 @@ const SignIn = ({ user, setUser }) => {
                 value={name}
                 onChange={(event) => setName(event.target.value)}
             ></input>
-            <button className="signin" onClick={() => navigate('/sign-in')}>Sign In</button>
+            <button className="signin" onClick={() => navigate('/sign-in')}>Log In</button>
 
         </form>
     );
