@@ -65,3 +65,11 @@ export const getAllUsers = () => {
         });
 }
 
+export const fetchArticlesByTopic = (topic) => {
+    return axios
+        .get(`${URL}/articles?topic=${topic}`)
+        .then((response) => {
+            return response.data.topic;
+        })
+};
+

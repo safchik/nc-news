@@ -6,6 +6,7 @@ import Comments from "./Comments";
 import '../styles.css';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { formatDate } from "../utils"
 
 const SingleArticle = ({ user }) => {
     const [article, setArticle] = useState({});
@@ -53,7 +54,7 @@ const SingleArticle = ({ user }) => {
                     <p>Author: {article.author}</p>
                     <img src={article.article_img_url} alt={article.title}></img>
                     <p>Body: {article.body}</p>
-                    <p>Created at: {article.created_at}</p>
+                    <time>Created at: {formatDate(article.created_at)}</time>
                     <p>
                         Votes: {article.votes} &nbsp;
                         <button className="upvote-button" onClick={() => handleVote('up')}>

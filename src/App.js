@@ -10,6 +10,7 @@ import Nav from './components/Nav';
 import Comments from './components/Comments';
 import { UserContext } from './contexts/User';
 import UserList from './components/UserList';
+import TopicCard from './components/TopicCard';
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -30,6 +31,7 @@ function App() {
           <Route path="/articles/:article_id" element={<SingleArticle />} />
           <Route path="/articles/:comment_id" element={<Comments />} />
           <Route path="/allusers" element={<UserList setUser={setUser} />} />
+          <Route path="/topics/:topic" element={<TopicCard />} />
         </Routes>
       </div>
     </UserContext.Provider>

@@ -3,6 +3,7 @@ import { fetchComments, postComment } from "../api";
 import "../styles.css";
 import { useContext } from "react";
 import { UserContext } from "../contexts/User";
+import { formatDate } from "../utils"
 
 function Comments({ article_id }) {
 
@@ -81,7 +82,7 @@ function Comments({ article_id }) {
                             <li key={comment.comment_id}>
                                 <p>{comment.body}</p>
                                 <p>By: {comment.author}</p>
-                                <p>Created at: {comment.created_at}</p>
+                                <time>Created at: {formatDate(comment.created_at)}</time>
                             </li>
                         ))}
                     </ul>
