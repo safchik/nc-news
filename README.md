@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Experience the live demonstration of the project by visiting the following link: https://lookwhatifound.netlify.app
+Experience the live demonstration of the project by visiting the following link: https://funnynews.netlify.app
 
 ## Available Scripts
 
